@@ -1,4 +1,4 @@
-package com.innovationv2.SparkCore.CH3_Datasource
+package com.innovationv2.SparkCore.CH3_LoadData
 
 import com.innovationv2.AppBase
 import org.apache.spark.rdd.{JdbcRDD, RDD}
@@ -9,7 +9,7 @@ import java.sql.{DriverManager, ResultSet}
 class LoadData extends AppBase("LoadDataDemo") {
   @Test
   def loadDataFromFS(): Unit = {
-    sc.textFile("wc.txt", 2)
+    sc.textFile("words.txt", 2)
       .foreach(println)
   }
 

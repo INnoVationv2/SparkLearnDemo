@@ -1,5 +1,6 @@
 package com.innovationv2
 
+import com.innovationv2.Config.FILEPATH
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
 
@@ -13,5 +14,9 @@ object Utils {
       .master("local[*]")
       .appName(appName)
       .getOrCreate()
+  }
+
+  def getFilepath(filename: String): String = {
+    FILEPATH + filename
   }
 }

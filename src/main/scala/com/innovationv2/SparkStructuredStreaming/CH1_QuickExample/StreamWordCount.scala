@@ -1,6 +1,7 @@
 package com.innovationv2.SparkStructuredStreaming.CH1_QuickExample
 
 import com.innovationv2.AppBase
+import org.apache.spark.sql.streaming.OutputMode
 import org.junit.Test
 
 class StreamWordCount extends AppBase("Demo") {
@@ -18,7 +19,7 @@ class StreamWordCount extends AppBase("Demo") {
       .flatMap(_.split(" "))
       .groupBy("value").count()
     val query = wordCounts.writeStream
-      .outputMode("complete")
+      .outputMode(OutputMode.Complete)
       .format("console")
       .start()
 

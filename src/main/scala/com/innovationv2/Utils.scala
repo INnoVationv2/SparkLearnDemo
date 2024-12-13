@@ -16,7 +16,11 @@ object Utils {
     FILEPATH + filename
   }
 
-  def getStructuredStreamingPath(path: String): String = {
+  def getStructuredStreamingPath(pathStr: String): String = {
+    var path = pathStr
+    if (path.nonEmpty && path.charAt(0) == '/') {
+      path = path.substring(1)
+    }
     STRUCTURED_STREAMING_FILEPATH + path
   }
 }

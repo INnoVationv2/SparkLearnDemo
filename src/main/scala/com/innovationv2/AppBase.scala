@@ -8,10 +8,11 @@ import org.junit.{After, Before}
 class AppBase(name: String) {
   var ss: SparkSession = _
   var sc: SparkContext = _
+  val confMap: Map[String, Any] = Map()
 
   @Before
   def init(): Unit = {
-    ss = getSparkSession(name)
+    ss = getSparkSession(name, confMap)
     sc = ss.sparkContext
   }
 

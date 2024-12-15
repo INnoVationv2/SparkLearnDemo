@@ -24,11 +24,21 @@ class AppBase(name: String) {
   }
 
   def outputToConsole(df: DataFrame, mode: OutputMode): Unit = {
-    df.writeStream
+    val query = df.writeStream
       .outputMode(mode)
       .format("console")
       .option("truncate", "false")
       .start()
-      .awaitTermination()
+
+    // 打印Watermark
+    //    while (query.isActive) {
+    //      val progress = query.lastProgress
+    //      if (progress != null) {
+    //        println(s"Current Watermark: ${progress.eventTime.get("watermark")}")
+    //      }
+    //      Thread.sleep(1000)
+    //    }
+
+    query.awaitTermination()
   }
 }

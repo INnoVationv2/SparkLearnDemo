@@ -10,7 +10,7 @@ class KafkaSource extends AppBase("kafka_source") {
   private val topic: String = s"KafkaSource-${System.currentTimeMillis() % 1000}"
 
   @Test
-  def createStreamingQuery(): Unit = {
+  def subscribeSingleTopic(): Unit = {
     new KafkaSender(topicPrefix = topic, msgNum = 5).start()
 
     val df = ss.readStream

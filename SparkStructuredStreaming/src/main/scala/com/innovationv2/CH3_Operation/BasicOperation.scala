@@ -1,9 +1,8 @@
 package com.innovationv2.CH3_Operation
 
 import com.innovationv2.AppBase
-import com.innovationv2.Utils.getFilepath
+import com.innovationv2.utils.Utils.getFilepath
 import org.apache.spark.sql.DataFrame
-import org.apache.spark.sql.expressions.scalalang.typed
 import org.apache.spark.sql.streaming.OutputMode
 import org.apache.spark.sql.types.{DateType, DoubleType, StringType, StructType}
 import org.junit.Test
@@ -46,13 +45,14 @@ class BasicOperation extends AppBase("BasicOperation") {
   def typedAPI(): Unit = {
     val spark = ss
     import spark.implicits._
-    var ds = input().as[DeviceData]
+    val ds = input().as[DeviceData]
     import org.apache.spark.sql.expressions.scalalang.typed
-    ds = ds.filter(_.signal > 10)
+    val ds_2 = ds.filter(_.signal > 10)
       .groupByKey(_.deviceType)
       .agg(typed.avg(_.signal))
 
-    ds.groupByKey(_.deviceType).agg(typed.avg(_.signal))
+    ds.groupByKey(_.deviceType)
+      .agg(typed.avg(_.signal))
       .show()
   }
 }

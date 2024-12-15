@@ -1,7 +1,7 @@
 package com.innovationv2.CH2_CreatDFAndDS
 
 import com.innovationv2.AppBase
-import com.innovationv2.Utils.getFilepath
+import com.innovationv2.utils.Utils.getFilepath
 import org.apache.spark.sql.streaming.OutputMode
 import org.apache.spark.sql.types.StructType
 import org.junit.Test

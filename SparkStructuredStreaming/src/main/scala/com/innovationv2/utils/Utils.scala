@@ -1,4 +1,4 @@
-package com.innovationv2
+package com.innovationv2.utils
 
 import com.innovationv2.Config.FILEPATH
 import org.apache.spark.sql.SparkSession
